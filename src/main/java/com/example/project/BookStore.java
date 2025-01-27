@@ -11,6 +11,7 @@ public class BookStore {
     public BookStore() {
     }
 
+    // Getter/setter
     public User[] getUsers() {
         return users;
     }
@@ -26,6 +27,7 @@ public class BookStore {
     public void addUser(User user) {
         for (int i = 0; i < users.length; i++) {
             if (users[i] == null) {
+                // Set first instance of null in array to the user
                 users[i] = user;
                 return;
             }
@@ -35,6 +37,7 @@ public class BookStore {
     public void removeUser(User user) {
         for (int i = 0; i < users.length; i++) {
             if (users[i] == user) {
+                // Set all instances of user to null
                 users[i] = null;
             }
         }
@@ -65,11 +68,11 @@ public class BookStore {
 
     public void insertBook(Book book, int index) {
         Book[] newBooks = new Book[books.length + 1];
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) { // Insert all books before index
             newBooks[i] = books[i];
         }
-        newBooks[index] = book;
-        for (int i = index; i < books.length; i++) {
+        newBooks[index] = book; // Insert book from parameter
+        for (int i = index; i < books.length; i++) { // Insert rest of books
             newBooks[i + 1] = books[i];
         }
         books = newBooks;
@@ -80,11 +83,12 @@ public class BookStore {
         for (Book currentBook : books) {
             if (currentBook == book) {
                 int newQuantity = currentBook.getQuantity() - 1;
-                currentBook.setQuantity(newQuantity);
-                if (newQuantity <= 0)
+                currentBook.setQuantity(newQuantity); // Remove 1 from quantity of book
+                if (newQuantity <= 0) // Remove book from array if none are left
                     arrayLength--;
             }
         }
+        // Create new book arrau
         Book[] newBooks = new Book[arrayLength];
         int newBooksIndex = 0;
         for (int i = 0; i < books.length; i++) {
@@ -92,12 +96,12 @@ public class BookStore {
                 newBooks[newBooksIndex] = books[i];
                 newBooksIndex++;
             }
-            ;
         }
         books = newBooks;
     }
 
     public String bookStoreBookInfo() {
+        // List all books in book store
         String result = "";
         for (Book book : books) {
             result += book.bookInfo() + "\n";
@@ -106,6 +110,7 @@ public class BookStore {
     } // you are not tested on this method but use it for debugging purposes
 
     public String bookStoreUserInfo() {
+        // List all users in book store
         String result = "";
         for (User user : users) {
             if (user == null) {

@@ -1,9 +1,9 @@
 package com.example.project;
 
 public class User {
-    // requires 3 private attributes String name, String Id, Book book that is
-    // initialized to empty
+    // Name
     private String name;
+    // Unique user ID
     private String id;
     private Book[] books = new Book[5];
 
@@ -14,6 +14,7 @@ public class User {
         this.id = id;
     }
 
+    // Getter/setter methods
     public String getName() {
         return name;
     }
@@ -38,6 +39,7 @@ public class User {
         books = newBooks;
     }
 
+    // List book info for all books
     public String bookListInfo() {
         String result = "";
         for (Book book : books) {
@@ -50,6 +52,7 @@ public class User {
         return result;
     }
 
+    // List user info
     public String userInfo() {
         return "Name: " + name + "\nId: " + id + "\nBooks: \n" + bookListInfo();
     }

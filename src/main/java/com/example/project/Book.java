@@ -15,6 +15,7 @@ public class Book {
         this.quantity = quantity;
     }
 
+    // Getter/setter
     public String getTitle() {
         return title;
     }
