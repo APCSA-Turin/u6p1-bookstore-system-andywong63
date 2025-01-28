@@ -39,6 +39,36 @@ public class User {
         books = newBooks;
     }
 
+
+    public void addBook(Book book) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] == null) {
+                books[i] = book;
+                return;
+            }
+        }
+    }
+
+    public void removeBook(Book book) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] == book) {
+                books[i] = null;
+            }
+        }
+
+        // Consolidate book list
+        int nextEmpty = 0;
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] != null) {
+                if (i != nextEmpty) {
+                    books[nextEmpty] = books[i];
+                    books[i] = null;
+                }
+                nextEmpty++;
+            }
+        }
+    }
+
     // List book info for all books
     public String bookListInfo() {
         String result = "";
